@@ -1007,13 +1007,30 @@ Polls is a simple API allowing consumers to view polls and vote in them.
 
 # Error Summary
 
-
-
-| HTTP Status Code  | Error Code    | Description |
-|-------------------|---------------|-------------|
-|403                |8517           |The partner is not allowed to create subaccounts. For example, you tried to create subaccounts when your partner configuration is not configured to use the endpoints to create them. |
-|400                |8518           |The bank account type is invalid. For example, you tried to update an ACH bank account with EFT bank account details. |
-|400                |8519           |The bank account cannot be deleted. All subaccounts using this shared destination bank account must be modified to use a different destination bank account before this one can be deleted. |
+| HTTP Status Code  | Error Code    | Error Message |Description |
+|-------------------|---------------|-------------  |------------|
+|400                |5068           |No updates are allowed on submitted Applications| No updates are allowed on submitted applications.|
+|400                |5068           |Combination of processing currency, settlement currency and productType is not configured for onboarding config id:<onboardingConfigId>|Combination of processing currency, settlement currency and productType is not configured for onboarding config id:<onboardingConfigId>.|
+|400                |5068           |<bankAccountType>BankAccount should be given|Requird bank account details are not provided.|
+|400                |5068           |At least one bank account should be given|Application is submitted without providing bank account information at any level.|
+|400                |5068           |Only one bank account should be given| Multiple bank accounts are provided at any of BLE/BD/Account level.|
+|400                |5068           |At least one user should be given | At least one user should be given.|
+|400                |5068           |Username(s) %s are duplicated| Duplicate usernames exists in the application.|
+|401                |5270           |Not authorized to perform this operation| partnerId in API key and onboarding configId related partnerId is not matching.|
+|401                |5279           |Invalid credentials|The authentication credentials are invalid.|
+|404                |5269           |No T&C found| No Terms and Conditions documents are configured for onboarding config id.|
+|404                |5269           |No Application found with id: <appId>| No Application exists with the provided application Id.|
+|404                |5269           |Application <appId> already submitted| Application <appId> is already submitted.|
+|404                |5269           |No Business Details exists| No Business Details are provided.|
+|404                |5269           |No Business Legal Entity exists| No details about the Business Legal Entity are provided.|
+|404                |5269           |LoginName is not available | The selected loginName is already taken.|
+|429                |1200           |API call rate exceeded|The user has sent too many requests in a given amount of time.|
+|500                |1000           |An internal error occurred.|An internal error occurred.|
+|500                |1003           |An internal error occurred.|An internal error occurred.|
+|500                |1003           |An internal error occurred.|An internal error occurred.|
+|500                |1007           |An internal error occurred.|An internal error occurred.|
+|500                |1008           |An internal error occurred.|An internal error occurred.|
+|502                |1001           |An error occurred with the external processing gateway.|An error occurred with the external processing gateway.|
 
 # Appendices
 
